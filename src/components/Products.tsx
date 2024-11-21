@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { Check } from 'lucide-react';
 import ProductCard from './ProductCard';
 import { getFeaturedProducts, type Product } from '@/lib/supabase';
 
@@ -11,9 +10,9 @@ export default function Products() {
     async function loadProducts() {
       try {
         const data = await getFeaturedProducts();
-        setProducts(data);
+        setProducts(data || []);
       } catch (error) {
-        console.error('Error loading products:', error);
+        console.error('Error loading featured products:', error);
       } finally {
         setLoading(false);
       }
