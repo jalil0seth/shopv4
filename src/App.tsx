@@ -1,19 +1,16 @@
-import React from 'react';
-import Navbar from '@/components/Navbar';
-import Hero from '@/components/Hero';
-import Products from '@/components/Products';
-import Testimonials from '@/components/Testimonials';
-import Footer from '@/components/Footer';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Toaster } from 'react-hot-toast';
+import AppRoutes from './routes';
+import { AuthProvider } from './contexts/AuthContext';
 
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Navbar />
-      <Hero />
-      <Products />
-      <Testimonials />
-      <Footer />
-    </div>
+    <Router>
+      <AuthProvider>
+        <AppRoutes />
+        <Toaster position="top-right" />
+      </AuthProvider>
+    </Router>
   );
 }
 
